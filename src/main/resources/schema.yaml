@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+    title: Petstore
+    version: 1.0.0
+components:
+  schemas:
+    Animal:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          dog: '#/components/schemas/Dog'
+          cat: '#/components/schemas/Cat'
+          bird: '#/components/schemas/Bird'
+    Dog:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          properties:
+            breed:
+              type: string
+    Cat:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          properties:
+            color:
+              type: string
+    Bird:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          properties:
+            wingspan:
+              type: number
