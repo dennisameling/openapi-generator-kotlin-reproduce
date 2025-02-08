@@ -1,0 +1,10 @@
+.openapi-generator-ignore
+README.md
+build.gradle.kts
+gradle.properties
+settings.gradle
+src/main/kotlin/com/example/openapigenerator/Main.kt
+src/main/kotlin/com/example/openapigenerator/models/Animal.kt
+src/main/kotlin/com/example/openapigenerator/models/Bird.kt
+src/main/kotlin/com/example/openapigenerator/models/Cat.kt
+src/main/kotlin/com/example/openapigenerator/models/Dog.kt
