@@ -29,7 +29,9 @@ kotlin {
 
 sourceSets.main {
     java.srcDirs(
-        "${projectDir}/generated-sources/openapi/src/main/kotlin",
+        "${projectDir}/generated-sources-client/src/main/kotlin",
+        "${projectDir}/generated-sources-kotlin-server/src/main/kotlin",
+        "${projectDir}/generated-sources-kotlin-spring/src/main/kotlin",
     )
 }
 
@@ -38,9 +40,9 @@ tasks.register<GenerateTask>("openApiGenerateClient") {
     group = "build"
     generatorName.set("kotlin")
     inputSpec.set("${projectDir}/src/main/resources/schema.yaml")
-    outputDir.set("${projectDir}/generated-sources-client/openapi")
+    outputDir.set("${projectDir}/generated-sources-client")
     cleanupOutput = true
-    packageName.set("com.example.openapigenerator")
+    packageName.set("com.example.openapigenerator.client")
     configOptions.set(
         mapOf(
             "serializationLibrary" to "jackson",
@@ -53,10 +55,10 @@ tasks.register<GenerateTask>("openApiGenerateKotlinServer") {
     group = "build"
     generatorName.set("kotlin-server")
     inputSpec.set("${projectDir}/src/main/resources/schema.yaml")
-    outputDir.set("${projectDir}/generated-sources-kotlin-server/openapi")
+    outputDir.set("${projectDir}/generated-sources-kotlin-server")
     cleanupOutput = true
     library = "javalin6"
-    packageName.set("com.example.openapigenerator")
+    packageName.set("com.example.openapigenerator.kotlin.server")
     configOptions.set(
         mapOf(
             // This doesn't do anything on the kotlin-server generator
@@ -70,9 +72,9 @@ tasks.register<GenerateTask>("openApiGenerateKotlinSpring") {
     group = "build"
     generatorName.set("kotlin-spring")
     inputSpec.set("${projectDir}/src/main/resources/schema.yaml")
-    outputDir.set("${projectDir}/generated-sources-kotlin-spring/openapi")
+    outputDir.set("${projectDir}/generated-sources-kotlin-spring")
     cleanupOutput = true
-    packageName.set("com.example.openapigenerator")
+    packageName.set("com.example.openapigenerator.kotlin.spring")
     configOptions.set(
         mapOf(
             // This doesn't do anything on the kotlin-server generator

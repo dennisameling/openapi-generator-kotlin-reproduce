@@ -1,4 +1,4 @@
-import com.example.openapigenerator.models.Animal
+import com.example.openapigenerator.client.models.Animal
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 
